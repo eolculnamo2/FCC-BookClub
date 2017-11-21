@@ -7,3 +7,12 @@ function login(){
 	main.innerHTML += '<a href = "/"><button class = "loginButton" id = "back"> Back </button></a>'
 }
 
+function register(){
+	var main = document.getElementById('main')
+	main.innerHTML = '<form class = "login" method = "POST" action = "/register">';
+	main.innerHTML += '<h4 class ="loginText">Username</h4> <input placeholder = "Username" class = "loginInput" name = "user"><br/>';
+	main.innerHTML += '<h4 class ="loginText">Password</h4> <input placeholder ="Password" class = "loginInput" name = "password" type = "password">';
+	main.innerHTML += '<h4 class ="loginText">Confirm Password</h4> <input placeholder ="Confirm Password" class = "loginInput" name = "confirmPassword" type = "password"><br/></br>';
+	main.innerHTML += '<button class = "loginButton" type = submit id = submit> Register </button>';
+	main.innerHTML += '<a href = "/"><button class = "loginButton" id = "back"> Back </button></a>'
+}
