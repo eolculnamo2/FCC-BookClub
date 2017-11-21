@@ -1,0 +1,75 @@
+nav{
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    height: 85px;
+    font-size: 15px;
+   background-color: #4c4d4f;
+}
+header{
+	height: 150px;
+}
+
+#main{
+	width: 100%;
+	height: 60vh;
+	background-color: #5170a0;
+}
+.menuButs{
+	color: white;
+	padding: 20px;
+	font-size: 30px;
+	cursor: pointer;
+}
+.credButs{
+	float: right;
+}
+.credButs2{
+	float: left;
+}
+.log{
+	font-size: 25px;
+	color: white;
+}
+.mainLog{
+	margin-top: 5%;
+	font-size: 150px;
+	color: white;
+	}
+.white{
+	color: white;
+}
+.quote{
+	color: #9fa4ad;
+	font-size: 30px;
+	width: 75%;
+	font-family: 'Spectral SC', serif;
+}
+.loginText{
+	color: white;
+	font-size: 25px;
+	font-family: 'Spectral SC', serif;
+}
+.loginInput{
+	padding: 5px 15px 5px 15px;
+	border-radius: 10px;
+	outline: none;
+
+}
+.loginButton{
+	padding: 10px;
+	border: 0px;
+	margin-right: .25%;
+	margin-left: .25%;
+	width: 100px;
+	border-radius: 8px;
+	color: white;
+	background-color: #4c4d4f;
+}
+.login{
+	padding: 40px;
+
+}
+ @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
+
