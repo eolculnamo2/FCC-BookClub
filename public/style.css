@@ -3,14 +3,16 @@ nav{
     top: 0;
     width: 100%;
     z-index: 1;
-    height: 85px;
+    height: 60px;
     font-size: 15px;
    background-color: #4c4d4f;
 }
 header{
 	height: 150px;
 }
-
+li{
+  list-style-type: none;
+}
 #main{
   padding: 20px;
 	width: 100%;
@@ -19,8 +21,10 @@ header{
 }
 .menuButs{
 	color: white;
-	padding: 20px;
-	font-size: 30px;
+  margin-right: 1%;
+  margin-left: 1%;
+  margin-top: 1%;
+	font-size: 25px;
 	cursor: pointer;
 }
 .credButs{
@@ -29,12 +33,15 @@ header{
 .credButs2{
 	float: left;
 }
+.alert{
+  background-color: #5170a0;
+  color: red;
+}
 .log{
 	font-size: 25px;
 	color: white;
 }
 .mainLog{
-	margin-top: 5%;
 	font-size: 150px;
 	color: white;
 	}
@@ -70,7 +77,75 @@ header{
 }
 .login{
 	padding: 10px;
+}
 
+
+#dashMain{
+  margin-top: 3%;
+  min-height: 70vh;
+}
+#bookDisplay{
+  margin-top: 2%;
+  border: 1px solid grey;
+  height: 50vh;
+  width: 80%;
+}
+#myBooks{
+border: 2px solid black;
+background-color: white;
+position: fixed;
+z-index: 1;
+display: none;
+height: 80vh;
+width: 80vw;
+margin-left: 10%
+}
+.welcomeUser{
+  margin-left: 5%;
+  font-size: 30px;
+  font-family: 'Spectral SC', serif;
+}
+.dashFooter{
+  height: 20vh;
+  background-color: #5170a0;
+}
+.previousBtn{
+  margin-left: 10%;
+  font-size: 25px;
+}
+.previousBtn:hover{
+  color:grey;
+  cursor: pointer;
+  outline: none;
+}
+.nextBtn{
+  float: right;
+  margin-right: 10%;
+  font-size: 25px;
+}
+.nextBtn:hover{
+  color: grey;
+  cursor: pointer;
+  outline: none;
+}
+.viewTrades{
+  font-size: 20px;
+  margin-left: 10%;
+}
+.viewTrades:hover{
+  color: grey;
+  cursor: pointer;
+  outline: none;
+}
+.myBooks{
+  float:right;
+  font-size: 20px;
+  margin-right: 10%;
+}
+.myBooks:hover{
+    color: grey;
+  cursor: pointer;
+  outline: none;
 }
  @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
 
