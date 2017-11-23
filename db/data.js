@@ -6,7 +6,7 @@ module.exports = {
   //Register New User
   newUser: function(info, callback){
     mongo.MongoClient.connect(url, (err,db)=>{
-      db.collection('bookClub').findOne({user: info.user},(err,result)=>{
+      db.collection('bookClub').findOne({username: info.username, password: info.password},(err,result)=>{
         if(result){
           callback(true)
         }
@@ -31,7 +31,17 @@ module.exports = {
         }
       })
     })
-  }//End Login
-  
+  },//End Login
+  //Add Book
+  addBook: function(user,info,callback){
+    mongo.MongoClient.connect(url,(err,db)=>{
+      db.collection('bookClub').update({username: user},
+                                      {$push: {books: info}})
+      db.collection('bookClub').findOne({username:user}, (err,result)=>{
+        console.log(result.books)
+        callback(result.books)
+      })
+    })
+  }//End Add Book
   //end exports
 }
