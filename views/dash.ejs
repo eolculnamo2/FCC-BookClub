@@ -25,17 +25,23 @@
 	<body>
 		      <!--- My Books Popup -->
         <div id = "myBooks">
-          <center>
-          <h4>
+          <span onclick = 'out()' class="glyphicon glyphicon-remove exit"> </span>
+         
+          <h4 style = "margin-left: 2%">
             My Books
             </h4>
-            <button>
+           <center>
+             <form method = "POST" action = "/addBook">
+            <button type = "submit">
               <!-- Add Icon with Button-->
               Add Book
             </button>
+             <input name = "newBook">
+             </form>
             <ul>
                <% books.forEach((x)=>{
-                %><li><%= x %> </li> <%
+                %><span>  <div>
+              <img src = <%= x["picture"] %>> <br> <%= x.title %> </div></span> <%
               }) %>
             </ul>
            

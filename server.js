@@ -91,14 +91,39 @@ app.post('/login',(req,res)=>{
     else if(test){
       res.cookie("username", data.username)
       res.cookie("books", data.books)
-      res.render('dash',{
-        name: req.cookies.username,
-        books: req.cookies.books
-      })
+      
+ res.redirect('/dashboard')
     }
   })
 })
 //END LOGIN
+
+
+//ADD BOOK
+app.post('/addBook',(req,res)=>{
+  var newBook = req.body.newBook;
+  
+  books.search(newBook, function(error, results) {
+    if ( ! error ) {
+      
+        var info = {
+          title: results[0].title,
+          author: results[0].authors,
+          picture: results[0].thumbnail
+        }
+        console.log(info)
+        db.addBook(req.cookies.username,info,(updated)=>{
+          res.cookie("books", updated)
+          
+          res.redirect('/dashboard')
+        })
+    } else {
+        console.log(error);
+    }
+});
+  
+})
+//END ADD BOOK
 
 
 var listener = app.listen(process.env.PORT, function () {

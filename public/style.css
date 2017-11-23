@@ -98,7 +98,8 @@ z-index: 1;
 display: none;
 height: 80vh;
 width: 80vw;
-margin-left: 10%
+margin-left: 10%;
+overflow-y: scroll;
 }
 .welcomeUser{
   margin-left: 5%;
@@ -146,6 +147,17 @@ margin-left: 10%
     color: grey;
   cursor: pointer;
   outline: none;
+}
+.exit{
+  float: right;
+  margin-right: 2%;
+  color:#9b2212;
+  border: 2px solid #9b2212;
+}
+.exit:hover{
+background-color: #9b2212;
+color: white;
+  cursor: pointer;
 }
  @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
 
