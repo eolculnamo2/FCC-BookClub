@@ -39,7 +39,7 @@ app.get("/dashboard",(req,res)=>{
     });
   
   app.get("/inbox", (req,res)=>{
-    console.log("SDFWE")
+
     db.checkInbox(req.cookies.username,(outbound,inbound)=>{
       res.render('trades',{
         name: req.cookies.username,
@@ -179,6 +179,68 @@ console.log("Process"+ info.information)
   
 //END REQUEST TRADE
 
+//Delete Outbound Trade Request
+app.post("/delete",(req,res)=>{
+  var info = {
+    requestFrom: req.body.requestFrom,
+    title: req.body.title,
+    picture: req.body.picture,
+    username: req.cookies.username
+  }
+
+  db.deleteOutbound(info, (outbound,inbound)=>{
+        res.render('trades',{
+        name: req.cookies.username,
+        outbound: outbound,
+        inbound: inbound
+      })
+  })
+})
+//Delete Inbound Trade Request
+app.post("/deleteInbound",(req,res)=>{
+    var info = {
+    requestBy: req.body.requestBy,
+    title: req.body.title,
+    picture: req.body.picture,
+    username: req.cookies.username
+  }
+    db.deleteInbound(info,(outbound,inbound)=>{
+      res.render('trades',{
+        name: req.cookies.username,
+        outbound: outbound,
+        inbound: inbound
+      })
+    })
+})
+
+//Accept Trade Request
+app.post("/accept",(req,res)=>{
+  var info = {
+    requestBy: req.body.requestBy,
+    title: req.body.title,
+    picture: req.body.picture,
+    username: req.cookies.username
+  }
+  db.acceptInbound(info, (outbound,inbound)=>{
+    res.render('trades',{
+        name: req.cookies.username,
+        outbound: outbound,
+        inbound: inbound
+      })
+  })
+})
+
+app.post('/settings',(req,res)=>{
+  var info = {
+    username: req.cookies.username,
+    name: req.body.fullname,
+    address: req.body.address,
+    citystate: req.body.citystate
+  }
+  db.settings(info,()=>{
+    res.redirect('/dashboard')
+  })
+})
 
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);

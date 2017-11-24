@@ -38,7 +38,18 @@
           </h4>
           <ul>
             <% outbound.forEach((x)=>{ %>
-              <img src = "<%= x.picture %>">
+            <form class = "submitIt" method = "POST" action = "/delete" >
+            <input type ="hidden" name = "requestFrom" value = "<%= x.requestFrom %>">
+            <input type ="hidden" name = "title" value = "<%= x.title %>">
+            <input type ="hidden" name = "picture" value = "<%= x.picture %>">
+              <img src = "<%= x.picture %>"><br>
+              <strong>
+                Owner: <%= x.requestFrom %>
+              </strong>
+              <button class = "loginButton" type = "submit">
+                Delete
+              </button>
+                </form>
            <% }) %>
           </ul>
         
@@ -47,7 +58,31 @@
           </h4>
           <ul>
             <% inbound.forEach((x)=>{ %>
-              <img src = "<%= x.picture %>">
+            <div class = "submitIt">
+             
+              <form method = "POST" action = "/accept">
+                    <input type ="hidden" name = "requestBy" value = "<%= x.requestBy %>">
+            <input type ="hidden" name = "title" value = "<%= x.title %>">
+            <input type ="hidden" name = "picture" value = "<%= x.picture %>">
+                <img src = "<%= x.picture %>"><br>
+              <strong>
+                Requested By: <%= x.requestBy %>
+              </strong>
+                <button class = "loginButton" type = "submit">
+                Accept
+              </button>
+            </form>
+               
+        <form method = "POST" action = "/deleteInbound" >
+            <input type ="hidden" name = "requestBy" value = "<%= x.requestBy %>">
+            <input type ="hidden" name = "title" value = "<%= x.title %>">
+            <input type ="hidden" name = "picture" value = "<%= x.picture %>">
+              
+              <button class = "loginButton" type = "submit">
+                Reject
+              </button>
+                </form>
+            </div>
            <% }) %>
           </ul>
         
