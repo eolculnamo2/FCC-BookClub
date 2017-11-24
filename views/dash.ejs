@@ -49,28 +49,41 @@
         </div>
 		<div id = "dashMain">
       <span class = "welcomeUser">
-      Welcome <%= name %>
+       <%= name %>
       </span><br/>
-      <span class = "viewTrades">
+      <a href = "/inbox"><span class = "viewTrades">
         <!-- View Trades Link will Have both incoming and outgoing Trade Requests on Seperate Page
             or JavaScript will update this page. -->
       View Trades
-      </span>
+        </span></a>
       <span onclick = "showMyBooks()" class = "myBooks">
       My Books
       </span>
       <center>
   
-      <div id = "bookDisplay">
+      <div id = "bookDisplay"> 
+        
+          
+       <% allBooks.forEach((x,i)=>{ %>
+          <form id = <%= i %> class ="submitTrade" method = "POST" action = "/trade">
+          <input type = "hidden" name = "user" value = "<%= x.user %>">
+            <input type = "hidden" name = "title" value = "<%= x.title %>">
+            <input type = "hidden" name = "picture" value = "<%= x.picture %>">
+          <img onclick = "trade(<%= i %>)" src = <%= x.picture %> alt =  "<%= x.title %>" >
+              </form>
+        <% }) %>
+          
         
         </div>
       </center>
+      <!--
       <span class = "previousBtn">
         Previous
       </span>
       <span class = "nextBtn">
         Next
       </span>
+-->
 		</div>
 	  <center>
 		<footer class = "dashFooter">

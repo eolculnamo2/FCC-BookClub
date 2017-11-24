@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<head>
+	<title> BookHouse </title>
+  <link id="favicon" rel="icon" href="https://cdn.glitch.com/30fa63ee-79f7-42c9-992a-f7f5bdcabbf4%2Fthumbnails%2Ficon.png?1511284247590" type="image/x-icon">  
+  <link href="https://fonts.googleapis.com/css?family=Spectral+SC" rel="stylesheet">
+	<meta name="description" content="Rob's Portfolio Page">
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+  	<link  rel="stylesheet" href="/style.css" >
+	</head>
+	<nav>
+		<a href = "/"><span class = "credButs2 menuButs">
+			BookHouse
+		</span></a>
+		<span onclick = 'login()' class = "credButs menuButs">
+			Settings
+		</span>
+		<a href = "/logout"><span onclick = 'register()' class = "credButs menuButs">
+			Logout
+      </span></a>
+	</nav>
+	<body>
+		    
+ 
+		<div id = "dashMain">
+      <span class = "welcomeUser">
+       <%= name %>
+      </span><br/>
+      <a href = "/dashboard"><h3 style= "margin-left: 5%">
+      Back</h3></a>
+
+        <center>
+        <h4>
+          Pending Outbound Request
+          </h4>
+          <ul>
+            <% outbound.forEach((x)=>{ %>
+              <img src = "<%= x.picture %>">
+           <% }) %>
+          </ul>
+        
+           <h4>
+          Pending Inbound Request
+          </h4>
+          <ul>
+            <% inbound.forEach((x)=>{ %>
+              <img src = "<%= x.picture %>">
+           <% }) %>
+          </ul>
+        
+        </center>
+  
+		</div>
+	  <center>
+		<footer class = "dashFooter">
+			<div>
+      </div>
+		</footer>
+	</center>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src = "/dashJS.js"></script>
+
+	</body>
