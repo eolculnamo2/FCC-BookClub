@@ -98,7 +98,7 @@
           <input type = "hidden" name = "user" value = "<%= x.user %>">
             <input type = "hidden" name = "title" value = "<%= x.title %>">
             <input type = "hidden" name = "picture" value = "<%= x.picture %>">
-          <img onclick = "trade(<%= i %>)" src = <%= x.picture %> alt =  "<%= x.title %>" >
+          <img class = "cursor" onclick = "trade(<%= i %>)" src = <%= x.picture %> alt =  "<%= x.title %>" >
               </form>
         <% }) %>
           

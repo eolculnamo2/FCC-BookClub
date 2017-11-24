@@ -181,5 +181,8 @@ background-color: #9b2212;
 color: white;
   cursor: pointer;
 }
+.cursor{
+  cursor: pointer;
+}
  @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
 
