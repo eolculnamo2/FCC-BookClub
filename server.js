@@ -28,13 +28,27 @@ app.get("/",(req,res)=>{
 
 app.get("/dashboard",(req,res)=>{
   
+ 
   //name will be changed to mongoDB user
     var name = "Rob"
      res.render('dash', {
         name: req.cookies.username,
-        books: req.cookies.books
+        books: req.cookies.books,
+        allBooks: req.cookies.bookData
+  
     });
   
+  app.get("/inbox", (req,res)=>{
+    console.log("SDFWE")
+    db.checkInbox(req.cookies.username,(outbound,inbound)=>{
+      res.render('trades',{
+        name: req.cookies.username,
+        outbound: outbound,
+        inbound: inbound
+      })
+    })
+  })
+ 
 	//res.sendFile(__dirname + "/views/dash.ejs")
 })
 
@@ -78,7 +92,23 @@ res.send("Passwords Do Not Match");
 
 //BEGIN LOGIN
 app.post('/login',(req,res)=>{
-  
+  var listBookData =[];
+  db.listBooks((list)=>{
+ 
+    list.forEach((x)=>{
+      x[1].forEach((y)=>{
+        var obj = {
+          user: x[0],
+          title: y.title,
+          picture: y.picture
+        }
+        listBookData.push(obj);
+       
+      })
+    })
+    
+   res.cookie("bookData", listBookData)
+
   var info = {
     username: req.body.user,
     password: req.body.password
@@ -95,6 +125,7 @@ app.post('/login',(req,res)=>{
  res.redirect('/dashboard')
     }
   })
+      })
 })
 //END LOGIN
 
@@ -124,6 +155,29 @@ app.post('/addBook',(req,res)=>{
   
 })
 //END ADD BOOK
+
+//START REQUEST TRADE
+
+  app.post('/trade',(req,res)=>{
+    
+    var info = {
+      owner: req.body.user,
+      title: req.body.title,
+      picture: req.body.picture,
+      username: req.cookies.username
+    }
+console.log("Process"+ info.information)
+    db.requestTrade(info,()=>{
+       res.render('dash',{
+         name: req.cookies.username,
+        books: req.cookies.books,
+        allBooks: req.cookies.bookData
+       })
+    })
+    
+  })
+  
+//END REQUEST TRADE
 
 
 var listener = app.listen(process.env.PORT, function () {

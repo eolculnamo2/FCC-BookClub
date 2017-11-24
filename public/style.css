@@ -1,3 +1,7 @@
+a, a:visited, a:active {
+  color:inherit;
+  text-decoration: none;
+ }
 nav{
     left: 0;
     top: 0;
@@ -89,6 +93,7 @@ li{
   border: 1px solid grey;
   height: 50vh;
   width: 80%;
+  overflow-y: scroll;
 }
 #myBooks{
 border: 2px solid black;
@@ -100,6 +105,9 @@ height: 80vh;
 width: 80vw;
 margin-left: 10%;
 overflow-y: scroll;
+}
+.submitTrade{
+  display: inline;
 }
 .welcomeUser{
   margin-left: 5%;
