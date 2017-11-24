@@ -67,7 +67,9 @@ app.post('/register',(req,res)=>{
   var info = {
     username: req.body.user,
     password: req.body.password,
-    books: []
+    books: [],
+    inRequests: [],
+    outRequests: []
   }
   
   db.newUser(info,(exist)=>{
