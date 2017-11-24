@@ -3,17 +3,24 @@
 
 //showMyBooks and Close open and close the My Books pop up.
 function showMyBooks(){
-  document.getElementById("myBooks").style.display = "block"
+  document.getElementById("myBooks").style.display = "block";
 }
 
 function out(){
-  document.getElementById("myBooks").style.display = "none"
+  document.getElementById("myBooks").style.display = "none";
 }
 
 function trade(x){
-
   var a = confirm("Do you want to Request a Trade for: "+ event.target.alt+"?")
   if(a){
   document.getElementById(x).submit();
   }
+}
+
+function showSettings(){
+  document.getElementById("settings").style.display = "block";
+}
+
+function cancelSettings(){
+  document.getElementById("settings").style.display = "none";
 }

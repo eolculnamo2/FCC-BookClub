@@ -15,7 +15,7 @@
 		<a href = "/"><span class = "credButs2 menuButs">
 			BookHouse
 		</span></a>
-		<span onclick = 'login()' class = "credButs menuButs">
+		<span onclick = 'showSettings()' class = "credButs menuButs">
 			Settings
 		</span>
 		<a href = "/logout"><span onclick = 'register()' class = "credButs menuButs">
@@ -23,6 +23,35 @@
       </span></a>
 	</nav>
 	<body>
+          <!-- Settings Popup -->
+        <div id = "settings">
+          <center>
+          <h2 style = "margin-left: 2%">
+            Settings
+          </h2>
+          <form method = "POST" action = "/settings">
+            <h4>
+              Full Name:
+            </h4>
+            <input name= "fullname">
+            <h4>
+              Address:
+            </h4>
+            <input name= "address">
+            <h4>
+              City/State:
+            </h4>
+            <input name= "citystate"><br><br>
+             <button class = "loginButton" type = "submit">
+               Submit
+            </button>
+            <button onclick = "cancelSettings()" class = "loginButton" type = "button">
+               Cancel
+            </button>
+          </form>
+            
+            </center>
+    </div>
 		      <!--- My Books Popup -->
         <div id = "myBooks">
           <span onclick = 'out()' class="glyphicon glyphicon-remove exit"> </span>

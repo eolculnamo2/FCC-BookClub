@@ -83,6 +83,63 @@ module.exports = {
         callback(outbound,inbound)
       })
     })
-  }//End Check Inbox
+  },//End Check Inbox
+  //Delete Outbound Start
+  deleteOutbound: function(info,callback){
+    mongo.MongoClient.connect(url,(err,db)=>{
+      db.collection('bookClub').updateOne({username: info.username},
+                                      {$pull: {outRequests: {title: info.title}}})
+        db.collection('bookClub').updateOne({username: info.requestFrom},
+                                      {$pull: {inRequests: {title: info.title}}})
+      db.collection('bookClub').findOne({username: info.username}, (err,result)=>{
+        callback(result.outRequests, result.inRequests)
+      })
+    })
+  },//End Delete Outbound
+  //Start Delete Inbound
+  deleteInbound: function(info,callback){
+    mongo.MongoClient.connect(url,(err,db)=>{
+      db.collection('bookClub').updateOne({username: info.requestBy},
+                                      {$pull: {outRequests: {title: info.title}}})
+        db.collection('bookClub').updateOne({username: info.username},
+                                      {$pull: {inRequests: {title: info.title}}})
+      db.collection('bookClub').findOne({username: info.username}, (err,result)=>{
+        callback(result.outRequests, result.inRequests)
+      })
+    })
+  },//End Delete Inbound
+  //Start Accept Request
+  acceptInbound: function(info, callback){
+    var insert = {
+      title: info.title,
+      picture: info.picture
+    }
+    mongo.MongoClient.connect(url,(err,db)=>{
+      db.collection('bookClub').updateOne({username: info.requestBy},
+                                         {$push: {books: insert}})
+      db.collection('bookClub').updateOne({username: info.requestBy},
+                                         {$pull: {outRequests: {title: info.title}}})
+      db.collection('bookClub').updateOne({username: info.username},
+                                         {$pull: {inRequests: {title: info.title}}})
+      db.collection('bookClub').updateOne({username: info.username},
+                                         {$pull: {books: {title: info.title}}})
+      db.collection('bookClub').findOne({username: info.username}, (err,result)=>{
+        callback(result.outRequests, result.inRequests)
+      })
+    })
+  },//End Accept Requests
+  //Start Settings
+  settings: function(info, callback){
+    var personData= {
+      fullname: info.name,
+      address: info.address,
+      citystate: info.citystate
+    }
+    mongo.MongoClient.connect(url,(err,db)=>{
+      db.collection('bookClub').updateOne({username: info.username},
+                                     {$set: {personalInfo: personData}})
+      callback()
+    })
+  }
   //end exports
 }
