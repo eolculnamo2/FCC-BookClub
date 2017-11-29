@@ -3,6 +3,9 @@ var mongo = require('mongodb');
 var url = "mongodb://"+process.env.MONGO_USER+":"+process.env.MONGO_PASS+"@ds235785.mlab.com:35785/singletempo";
 
 module.exports = {
+  test: function(){
+    console.log("connected to db files...")
+  },
   //Register New User
   newUser: function(info, callback){
     mongo.MongoClient.connect(url, (err,db)=>{
@@ -22,7 +25,7 @@ module.exports = {
   login: function(info, callback){
     mongo.MongoClient.connect(url, (err,db)=>{
       db.collection('bookClub').findOne({username: info.username, password: info.password}, (err,result)=>{
- 
+
         if(!result){
           callback(null, false)
         }
